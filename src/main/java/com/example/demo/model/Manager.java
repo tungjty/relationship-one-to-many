@@ -20,6 +20,7 @@ public class Manager {
     private String fullName;
 
     @OneToMany(
+            // CascadeType.REMOVE : DELETE MANAGER -> DELETE EMPLOYEE
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY
     )
