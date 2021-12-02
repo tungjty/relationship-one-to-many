@@ -11,4 +11,6 @@ public interface ManagerService {
     List<Manager> getManagers();
 
     void deleteMangerById(Long id);
+
+    void removeOrphanEmployeeFromManager(Long ofManagerId, Long orphanEmployeeId);
 }

@@ -26,6 +26,13 @@ public class HomeController {
         return managerService.getManager(name);
     }
 
+    @GetMapping(path = "manager/orphanremoval")
+    public String removeOrphanEmployeeFromManager(@RequestParam("ofManagerId") Long ofManagerId,
+                                                   @RequestParam("orphanEmployeeId") Long orphanEmployeeId) {
+        managerService.removeOrphanEmployeeFromManager(ofManagerId, orphanEmployeeId);
+        return "ORPHAN EMPLOYEE WAS REMOVED FROM MANAGER SUCCESSFULLY";
+    }
+
     @GetMapping(path = "manager/all")
     public List<Manager> getAllManagers() {
         return managerService.getManagers();

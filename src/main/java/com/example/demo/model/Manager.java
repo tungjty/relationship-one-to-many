@@ -22,6 +22,7 @@ public class Manager {
     @OneToMany(
             // CascadeType.REMOVE : DELETE MANAGER -> DELETE EMPLOYEE
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            orphanRemoval = true, // REMOVE EMPLOYEE FROM LIST OF EMPLOYEES -> DELETE EMP IN DB
             fetch = FetchType.LAZY
     )
     @JoinColumn(
