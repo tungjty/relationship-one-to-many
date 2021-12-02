@@ -10,13 +10,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api")
-public class ManagerController {
+public class HomeController {
 
     private final ManagerService managerService;
     private final EmployeeService employeeService;
 
-    public ManagerController(ManagerService managerService,
-                             EmployeeService employeeService) {
+    public HomeController(ManagerService managerService,
+                          EmployeeService employeeService) {
         this.managerService = managerService;
         this.employeeService = employeeService;
     }
@@ -36,15 +36,17 @@ public class ManagerController {
         return employeeService.getEmployeese();
     }
 
+    // DELETE MANAGER -> DELETE ITS EMPLOYEE(S)
     @DeleteMapping(path = "manager/delete/{id}")
     public String deleteManager(@PathVariable("id") Long id) {
         managerService.deleteMangerById(id);
-        return "MANAGER WAS REMOVED SUCCESSFULLY";
+        return "MANAGER WITH ITS EMPLOYEE(S) WAS REMOVED SUCCESSFULLY";
     }
 
+    // DELETE EMPLOYEE ONLY
     @DeleteMapping(path = "employee/delete/{id}")
     public String deleteEmployee(@PathVariable("id") Long id) {
         employeeService.deleteEmployeeById(id);
-        return "EMPLOYEE WAS REMOVED SUCCESSFULLY";
+        return "EMPLOYEE WAS REMOVED ONLY";
     }
 }
